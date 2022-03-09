@@ -923,7 +923,6 @@ class B2Cell extends DisplayComponent<CellProps> {
             this.classSub.set(`FontMedium MiddleAlign ${color1}`);
         });
     }
-}
 
     render(): VNode {
         return (

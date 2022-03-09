@@ -9,11 +9,16 @@ import { DescentAltitudeConstraint, VerticalCheckpoint, VerticalCheckpointReason
 import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vnav/VerticalProfileComputationParameters';
 import { VnavConfig } from '@fmgc/guidance/vnav/VnavConfig';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { AircraftHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
 import { WindProfile } from '@fmgc/guidance/vnav/wind/WindProfile';
 =======
 import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+import { AircraftHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
+import { WindProfile } from '@fmgc/guidance/vnav/wind/WindProfile';
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
 export class GeometricPathBuilder {
     constructor(
@@ -22,10 +27,14 @@ export class GeometricPathBuilder {
     ) { }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     buildGeometricPath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, headingProfile: AircraftHeadingProfile, windProfile: WindProfile, finalCruiseAltitude: Feet) {
 =======
     buildGeometricPath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, windProfile: HeadwindProfile, finalCruiseAltitude: Feet) {
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+    buildGeometricPath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, headingProfile: AircraftHeadingProfile, windProfile: WindProfile, finalCruiseAltitude: Feet) {
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         const constraintsToUse = profile.descentAltitudeConstraints
             .slice()
             .filter(
@@ -39,9 +48,13 @@ export class GeometricPathBuilder {
             this.observer,
             this.atmosphericConditions,
 <<<<<<< HEAD
+<<<<<<< HEAD
             headingProfile,
 =======
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            headingProfile,
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             windProfile,
             speedProfile,
             constraintsToUse,
@@ -96,11 +109,16 @@ class GeometricPathPlanner {
         private observer: VerticalProfileComputationParametersObserver,
         private atmosphericConditions: AtmosphericConditions,
 <<<<<<< HEAD
+<<<<<<< HEAD
         private headingProfile: AircraftHeadingProfile,
         private windProfile: WindProfile,
 =======
         private windProfile: HeadwindProfile,
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        private headingProfile: AircraftHeadingProfile,
+        private windProfile: WindProfile,
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         private speedProfile: SpeedProfile,
         private constraints: DescentAltitudeConstraint[],
         private startingPoint: VerticalCheckpoint,
@@ -198,10 +216,14 @@ class GeometricPathPlanner {
         const stepSpeed = this.speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
 =======
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
         const step = Predictions.geometricStep(
             constraint.constraint.altitude1,
@@ -273,10 +295,14 @@ class GeometricPathPlanner {
         const stepSpeedMach = this.atmosphericConditions.computeMachFromCas(altitude, stepSpeed);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
 =======
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
         const step = Predictions.reverseDistanceStep(
             altitude,
@@ -318,10 +344,14 @@ class GeometricPathPlanner {
         const stepSpeed = this.speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
 =======
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
         const step = Predictions.geometricStep(
             alitudeToStartDescentFrom,

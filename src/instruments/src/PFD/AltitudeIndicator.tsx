@@ -120,9 +120,13 @@ export class AltitudeIndicator extends DisplayComponent<AltitudeIndicatorProps> 
         super.onAfterRender(node);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log('RENDER ALTITUDEINDICATOR');
 =======
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        console.log('RENDER ALTITUDEINDICATOR');
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         const pf = this.props.bus.getSubscriber<Arinc429Values>();
 
         pf.on('altitudeAr').handle((a) => {
@@ -240,6 +244,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
     private mode: 'QNH' | 'QFE' | 'STD' = 'QNH';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     lowerGroupRef =FSComponent.createRef<SVGGElement>();
 
     SelectedAltLowerText=FSComponent.createRef<SVGTextElement>();
@@ -259,6 +266,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
     targetSymbolRef=FSComponent.createRef<SVGPathElement>();
 
     AltTapeTargetText=FSComponent.createRef<SVGTextElement>();
+<<<<<<< HEAD
 =======
     private selectedAltLowerGroupRef = FSComponent.createRef<SVGGElement>();
 
@@ -280,6 +288,8 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
 
     private altTapeTargetText = FSComponent.createRef<SVGTextElement>();
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
     private altitude = new Arinc429Word(0);
 
@@ -308,6 +318,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
 
         if (selectedAltIgnored) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.SelectedAltLowerFLText.instance.classList.remove('Cyan');
             this.SelectedAltLowerFLText.instance.classList.remove('Magenta');
             this.SelectedAltLowerFLText.instance.classList.add('White');
@@ -326,6 +339,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
 
             this.AltTapeTargetText.instance.classList.remove('Cyan');
             this.AltTapeTargetText.instance.classList.add('White');
+<<<<<<< HEAD
 =======
             this.selectedAltLowerFLText.instance.classList.remove('Cyan');
             this.selectedAltLowerFLText.instance.classList.remove('Magenta');
@@ -346,6 +360,8 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.altTapeTargetText.instance.classList.remove('Cyan');
             this.altTapeTargetText.instance.classList.add('White');
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             this.targetSymbolRef.instance.classList.remove('Cyan');
             this.targetSymbolRef.instance.classList.remove('Magenta');
@@ -353,6 +369,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.targetSymbolRef.instance.classList.add('White');
         } else if (this.isManaged) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.SelectedAltLowerFLText.instance.classList.remove('Cyan');
             this.SelectedAltLowerFLText.instance.classList.remove('White');
             this.SelectedAltLowerFLText.instance.classList.add('Magenta');
@@ -372,6 +391,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.AltTapeTargetText.instance.classList.remove('Cyan');
             this.AltTapeTargetText.instance.classList.remove('White');
             this.AltTapeTargetText.instance.classList.add('Magenta');
+<<<<<<< HEAD
 =======
             this.selectedAltLowerFLText.instance.classList.remove('Cyan');
             this.selectedAltLowerFLText.instance.classList.remove('White');
@@ -393,12 +413,17 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.altTapeTargetText.instance.classList.remove('White');
             this.altTapeTargetText.instance.classList.add('Magenta');
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             this.targetSymbolRef.instance.classList.remove('Cyan');
             this.targetSymbolRef.instance.classList.remove('White');
             this.targetSymbolRef.instance.classList.add('Magenta');
         } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.SelectedAltLowerFLText.instance.classList.add('Cyan');
             this.SelectedAltLowerFLText.instance.classList.remove('Magenta');
             this.SelectedAltLowerFLText.instance.classList.remove('White');
@@ -418,6 +443,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.AltTapeTargetText.instance.classList.add('Cyan');
             this.AltTapeTargetText.instance.classList.remove('Magenta');
             this.AltTapeTargetText.instance.classList.remove('White');
+<<<<<<< HEAD
 =======
             this.selectedAltLowerFLText.instance.classList.add('Cyan');
             this.selectedAltLowerFLText.instance.classList.remove('Magenta');
@@ -439,6 +465,8 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.altTapeTargetText.instance.classList.remove('Magenta');
             this.altTapeTargetText.instance.classList.remove('White');
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             this.targetSymbolRef.instance.classList.add('Cyan');
             this.targetSymbolRef.instance.classList.remove('Magenta');
@@ -457,10 +485,14 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.getOffset();
             this.handleAltitudeDisplay();
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.getText();
 =======
             this.setText();
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            this.getText();
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         });
 
         sub.on('selectedAltitude').whenChanged().handle((m) => {
@@ -469,10 +501,14 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.getOffset();
             this.handleAltitudeDisplay();
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.getText();
 =======
             this.setText();
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            this.getText();
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         });
 
         sub.on('altConstraint').whenChanged().handle((m) => {
@@ -481,10 +517,14 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.getOffset();
             this.handleAltitudeDisplay();
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.getText();
 =======
             this.setText();
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            this.getText();
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         });
 
         sub.on('altitudeAr').withArinc429Precision(2).handle((a) => {
@@ -498,6 +538,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
 
             if (this.mode === 'STD') {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 this.SelectedAltLowerFLText.instance.style.visibility = 'visible';
                 this.SelectedAltUpperFLText.instance.style.visibility = 'visible';
             } else {
@@ -506,6 +549,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             }
             this.handleAltitudeDisplay();
             this.getText();
+<<<<<<< HEAD
 =======
                 this.selectedAltLowerFLText.instance.style.visibility = 'visible';
                 this.selectedAltUpperFLText.instance.style.visibility = 'visible';
@@ -516,6 +560,8 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.handleAltitudeDisplay();
             this.setText();
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         });
     }
 
@@ -526,6 +572,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
     private handleAltitudeDisplay() {
         if (this.altitude.value - this.shownTargetAltitude > DisplayRange) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.lowerGroupRef.instance.style.display = 'block';
             this.upperGroupRef.instance.style.display = 'none';
             this.targetGroupRef.instance.style.display = 'none';
@@ -536,6 +585,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
         } else {
             this.upperGroupRef.instance.style.display = 'none';
             this.lowerGroupRef.instance.style.display = 'none';
+<<<<<<< HEAD
 =======
             this.selectedAltLowerGroupRef.instance.style.display = 'block';
             this.selectedAltUpperGroupRef.instance.style.display = 'none';
@@ -548,15 +598,21 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
             this.selectedAltUpperGroupRef.instance.style.display = 'none';
             this.selectedAltLowerGroupRef.instance.style.display = 'none';
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.targetGroupRef.instance.style.display = 'inline';
         }
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private getText() {
 =======
     private setText() {
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+    private getText() {
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         let boxLength = 19.14;
         let text = '0';
         if (this.mode === 'STD') {
@@ -567,10 +623,14 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
         }
         this.textSub.set(text);
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.BlackFill.instance.setAttribute('d', `m117.75 77.784h${boxLength}v6.0476h-${boxLength}z`);
 =======
         this.blackFill.instance.setAttribute('d', `m117.75 77.784h${boxLength}v6.0476h-${boxLength}z`);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        this.BlackFill.instance.setAttribute('d', `m117.75 77.784h${boxLength}v6.0476h-${boxLength}z`);
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     }
 
     private getOffset() {
@@ -582,6 +642,9 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
         return (
             <>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 <g id="SelectedAltLowerGroup" ref={this.lowerGroupRef}>
                     <text id="SelectedAltLowerText" ref={this.SelectedAltLowerText} class="FontMedium EndAlign Cyan" x="135.7511" y="128.70299" style="white-space: pre">{this.textSub}</text>
                     <text id="SelectedAltLowerFLText" ref={this.SelectedAltLowerFLText} class="FontSmall MiddleAlign Cyan" x="120.87094" y="128.71681">FL</text>
@@ -594,6 +657,7 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
                     <path class="BlackFill" ref={this.BlackFill} />
                     <path class="NormalStroke Cyan" ref={this.targetSymbolRef} d="m122.79 83.831v6.5516h-7.0514v-8.5675l2.0147-1.0079m4.8441-3.0238v-6.5516h-6.8588v8.5675l2.0147 1.0079" />
                     <text id="AltTapeTargetText" ref={this.AltTapeTargetText} class="FontMedium StartAlign Cyan" x="118.228" y="83.067062" style="white-space: pre">{this.textSub}</text>
+<<<<<<< HEAD
 =======
                 <g id="SelectedAltLowerGroup" ref={this.selectedAltLowerGroupRef}>
                     <text id="SelectedAltLowerText" ref={this.selectedAltLowerText} class="FontMedium EndAlign Cyan" x="135.7511" y="128.70299" style="white-space: pre">{this.textSub}</text>
@@ -608,6 +672,8 @@ class SelectedAltIndicator extends DisplayComponent<SelectedAltIndicatorProps> {
                     <path class="NormalStroke Cyan" ref={this.targetSymbolRef} d="m122.79 83.831v6.5516h-7.0514v-8.5675l2.0147-1.0079m4.8441-3.0238v-6.5516h-6.8588v8.5675l2.0147 1.0079" />
                     <text id="AltTapeTargetText" ref={this.altTapeTargetText} class="FontMedium StartAlign Cyan" x="118.228" y="83.067062" style="white-space: pre">{this.textSub}</text>
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 </g>
             </>
         );
@@ -621,6 +687,7 @@ interface AltimeterIndicatorProps {
 
 class AltimeterIndicator extends DisplayComponent<AltimeterIndicatorProps> {
     private mode = Subject.create('');
+<<<<<<< HEAD
 
     private text = Subject.create('');
 
@@ -747,6 +814,120 @@ class AltimeterIndicator extends DisplayComponent<AltimeterIndicatorProps> {
         }
     }
 
+=======
+
+    private text = Subject.create('');
+
+    private pressure = 0;
+
+    private unit = '';
+
+    private transAlt = 0;
+
+    private transAltAppr = 0;
+
+    private flightPhase = 0;
+
+    private stdGroup = FSComponent.createRef<SVGGElement>();
+
+    private qfeGroup = FSComponent.createRef<SVGGElement>();
+
+    private qfeBorder = FSComponent.createRef<SVGGElement>();
+
+    onAfterRender(node: VNode): void {
+        super.onAfterRender(node);
+
+        const sub = this.props.bus.getSubscriber<PFDSimvars>();
+
+        const simPlaneSub = this.props.bus.getSubscriber<SimplaneValues>();
+
+        simPlaneSub.on('baroMode').whenChanged().handle((m) => {
+            if (m === 'QFE') {
+                this.mode.set(m);
+                this.stdGroup.instance.classList.add('HiddenElement');
+                this.qfeGroup.instance.classList.remove('HiddenElement');
+                this.qfeBorder.instance.classList.remove('HiddenElement');
+            } else if (m === 'QNH') {
+                this.mode.set(m);
+                this.stdGroup.instance.classList.add('HiddenElement');
+                this.qfeGroup.instance.classList.remove('HiddenElement');
+                this.qfeBorder.instance.classList.add('HiddenElement');
+            } else if (m === 'STD') {
+                this.mode.set(m);
+                this.stdGroup.instance.classList.remove('HiddenElement');
+                this.qfeGroup.instance.classList.add('HiddenElement');
+                this.qfeBorder.instance.classList.add('HiddenElement');
+            } else {
+                this.mode.set(m);
+                this.stdGroup.instance.classList.add('HiddenElement');
+                this.qfeGroup.instance.classList.add('HiddenElement');
+                this.qfeBorder.instance.classList.add('HiddenElement');
+            }
+            this.getText();
+        });
+
+        sub.on('fmgcFlightPhase').whenChanged().handle((fp) => {
+            this.flightPhase = fp;
+
+            this.handleBlink();
+        });
+
+        sub.on('transAlt').whenChanged().handle((ta) => {
+            this.transAlt = ta;
+
+            this.handleBlink();
+            this.getText();
+        });
+
+        sub.on('transAltAppr').whenChanged().handle((ta) => {
+            this.transAltAppr = ta;
+
+            this.handleBlink();
+            this.getText();
+        });
+
+        simPlaneSub.on('units').whenChanged().handle((u) => {
+            this.unit = u;
+            this.getText();
+        });
+
+        simPlaneSub.on('pressure').whenChanged().handle((p) => {
+            this.pressure = p;
+            this.getText();
+        });
+
+        this.props.altitude.sub((_a) => {
+            this.handleBlink();
+        });
+    }
+
+    private handleBlink() {
+        if (this.mode.get() === 'STD') {
+            if (this.flightPhase > 3 && this.transAltAppr > this.props.altitude.get() && this.transAltAppr !== 0) {
+                this.stdGroup.instance.classList.add('BlinkInfinite');
+            } else {
+                this.stdGroup.instance.classList.remove('BlinkInfinite');
+            }
+        } else if (this.flightPhase <= 3 && this.transAlt < this.props.altitude.get() && this.transAlt !== 0) {
+            this.qfeGroup.instance.classList.add('BlinkInfinite');
+        } else {
+            this.qfeGroup.instance.classList.remove('BlinkInfinite');
+        }
+    }
+
+    private getText() {
+        if (this.pressure !== null) {
+            if (this.unit === 'millibar') {
+                this.text.set(Math.round(this.pressure).toString());
+            } else {
+                this.text.set(this.pressure.toFixed(2));
+            }
+        } else {
+            this.text.set('');
+        }
+    }
+
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     render(): VNode {
         return (
             <>
@@ -776,6 +957,7 @@ class AltimeterIndicator extends DisplayComponent<AltimeterIndicatorProps> {
     metricAltToggle: boolean;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 class MetricAltIndicator extends DisplayComponent<{bus: EventBus }> {
 =======
@@ -859,6 +1041,87 @@ class MetricAltIndicator extends DisplayComponent<{ bus: EventBus }> {
         }
     }
 
+=======
+class MetricAltIndicator extends DisplayComponent<{bus: EventBus }> {
+    private needsUpdate = false;
+
+    private metricAlt = FSComponent.createRef<SVGGElement>();
+
+    private metricAltText = FSComponent.createRef<SVGTextElement>();
+
+    private metricAltTargetText = FSComponent.createRef<SVGTextElement>();
+
+    private state: MetricAltIndicatorState = {
+        altitude: new Arinc429Word(0),
+        MDA: 0,
+        targetAltSelected: 0,
+        targetAltManaged: 0,
+        altIsManaged: false,
+        metricAltToggle: false,
+    }
+
+    onAfterRender(node: VNode): void {
+        super.onAfterRender(node);
+
+        const sub = this.props.bus.getSubscriber<PFDSimvars & Arinc429Values & ClockEvents & SimplaneValues>();
+
+        sub.on('mda').whenChanged().handle((mda) => {
+            this.state.MDA = mda;
+            this.needsUpdate = true;
+        });
+
+        sub.on('altitudeAr').handle((a) => {
+            this.state.altitude = a;
+            this.needsUpdate = true;
+        });
+
+        sub.on('selectedAltitude').whenChanged().handle((m) => {
+            this.state.targetAltSelected = m;
+            this.needsUpdate = true;
+        });
+        sub.on('altConstraint').handle((m) => {
+            this.state.targetAltManaged = m;
+            this.needsUpdate = true;
+        });
+
+        sub.on('metricAltToggle').whenChanged().handle((m) => {
+            this.state.metricAltToggle = m;
+            this.needsUpdate = true;
+        });
+
+        sub.on('realTime').handle(this.updateState.bind(this));
+    }
+
+    private updateState(_time: number) {
+        if (this.needsUpdate) {
+            this.needsUpdate = false;
+            const showMetricAlt = this.state.metricAltToggle;
+            if (!showMetricAlt) {
+                this.metricAlt.instance.style.display = 'none';
+            } else {
+                this.metricAlt.instance.style.display = 'inline';
+                const currentMetricAlt = Math.round(this.state.altitude.value * 0.3048 / 10) * 10;
+                this.metricAltText.instance.textContent = currentMetricAlt.toString();
+
+                const targetMetric = Math.round((this.state.altIsManaged ? this.state.targetAltManaged : this.state.targetAltSelected) * 0.3048 / 10) * 10;
+                this.metricAltTargetText.instance.textContent = targetMetric.toString();
+
+                if (this.state.altIsManaged) {
+                    this.metricAltTargetText.instance.classList.replace('Cyan', 'Magenta');
+                } else {
+                    this.metricAltTargetText.instance.classList.replace('Magenta', 'Cyan');
+                }
+
+                if (this.state.altitude.value > this.state.MDA) {
+                    this.metricAltText.instance.classList.replace('Green', 'Amber');
+                } else {
+                    this.metricAltText.instance.classList.replace('Amber', 'Green');
+                }
+            }
+        }
+    }
+
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     render(): VNode {
         return (
             <g id="MetricAltGroup" ref={this.metricAlt}>

@@ -15,6 +15,7 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
     const [engine2AntiIce] = useSimVar('L:XMLVAR_Momentary_PUSH_OVHD_ANTIICE_ENG2_Pressed', 'number', 500);
     const [wingAntiIce] = useSimVar('L:XMLVAR_Momentary_PUSH_OVHD_ANTIICE_WING_Pressed', 'bool', 500);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     const messageStrings = [
         { name: 'PACKS', show: packs1Supplying || packs2Supplying },
@@ -31,6 +32,11 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
     const messageStrings = [
         { name: 'PACKS', show: (packs1Supplying || packs2Supplying) && apuBleedPressure === 0 },
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+
+    const messageStrings = [
+        { name: 'PACKS', show: packs1Supplying || packs2Supplying },
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         { name: 'NAI', show: engine1AntiIce || engine2AntiIce },
         { name: 'WAI', show: wingAntiIce },
     ];
@@ -38,6 +44,9 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
     const finalMessageString = messageStrings.filter((item) => item.show).map((item) => item.name).join('/');
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     const showMessage = !!(flightPhase === 2
     || (autoThrustMode >= 1 && autoThrustMode <= 4)
     || (flightPhase >= 5 && flightPhase <= 7 && autoThrustMode === 5));
@@ -49,6 +58,7 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
 
         <text className="Green Large End" x={x} y={y}>{finalMessageString}</text>
 
+<<<<<<< HEAD
 =======
     const showMessage = !!(
         [3, 4].includes(throttle1Position) || [3, 4].includes(throttle1Position)
@@ -61,6 +71,8 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
             ? <text className="Green Large End" x={x} y={y}>{finalMessageString}</text>
             : null)
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     );
 };
 

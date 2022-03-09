@@ -2,10 +2,14 @@ import { ClockEvents, DisplayComponent, EventBus, FSComponent, Subscribable, VNo
 import { Arinc429Word } from '@shared/arinc429';
 import { getDisplayIndex } from './PFD';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { calculateHorizonOffsetFromPitch, getSmallestAngle } from './PFDUtils';
 =======
 import { calculateHorizonOffsetFromPitch } from './PFDUtils';
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+import { calculateHorizonOffsetFromPitch, getSmallestAngle } from './PFDUtils';
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 import { Arinc429Values } from './shared/ArincValueProvider';
 import { PFDSimvars } from './shared/PFDSimvarPublisher';
 

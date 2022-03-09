@@ -386,9 +386,12 @@ class CDUFlightPlanPage {
 
 <<<<<<< HEAD
                     if (wp.legAltitudeDescription !== 0 && ident !== "(DECEL)") {
+<<<<<<< HEAD
 =======
                     if (hasAltConstraint && ident !== "(DECEL)") {
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                         if (verticalWaypoint && verticalWaypoint.altitude) {
                             altitudeToFormat = verticalWaypoint.altitude;
                         }
@@ -528,7 +531,11 @@ class CDUFlightPlanPage {
                     active: false,
                     ident: pwp.mcduIdent || pwp.ident,
                     color,
+<<<<<<< HEAD
                     distance: pwp.distanceInFP ? pwp.distanceInFP.toFixed(0) : "",
+=======
+                    distance: pwp.flightPlanInfo && pwp.flightPlanInfo.distanceFromLastFix ? Math.round(pwp.flightPlanInfo.distanceFromLastFix).toString() : "",
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                     spdColor: pwp.flightPlanInfo ? "green" : "white",
                     speedConstraint: pwp.flightPlanInfo ? Math.round(pwp.flightPlanInfo.speed).toFixed(0) : "---",
                     altColor: pwp.flightPlanInfo ? "green" : "white",

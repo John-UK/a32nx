@@ -192,7 +192,7 @@ export class DescentGuidance {
 
         SimVar.SetSimVarValue('L:A32NX_SPEEDS_MANAGED_PFD', 'knots', this.speedTarget);
 
-        const airspeed = SimVar.GetSimVarValue('AIRSPEED INDICATED', 'knots');
+        const airspeed = this.atmosphericConditions.currentAirspeed;
         const guidanceTarget = this.speedState === DescentSpeedGuidanceState.TargetAndMargins
             ? this.speedMargin.getTarget(airspeed, this.speedTarget)
             : this.speedTarget;

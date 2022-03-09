@@ -18,11 +18,6 @@ export class FlightModel {
 
     static gravityConstMS2 = 9.806665; // in m/s^2
 
-    // From https://github.com/flybywiresim/a32nx/pull/6903#issuecomment-1073168320
-    static machValues: Mach[] = [0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85]
-
-    static dragCoefficientCorrections: number[] = [0, 0.0002, 0.0003, 0.0004, 0.0008, 0.0015, 0.01]
-
     /**
      * Get lift coefficient at given conditions
      * @param weight in pounds
@@ -62,10 +57,14 @@ export class FlightModel {
             break;
         case FlapConf.CONF_3:
 <<<<<<< HEAD
+<<<<<<< HEAD
             baseDrag = (0.0768 * Cl ** 5) - (0.3979 * Cl ** 4) + (0.8252 * Cl ** 3) - (0.7951 * Cl ** 2) + (0.3851 * Cl) + 0.0107;
 =======
             baseDrag = (0.0768 * Cl ** 5) - (0.3979 * Cl ** 4) + (0.8252 * Cl ** 3) - (0.7951 * Cl ** 2) + (0.3851 * Cl) - 0.0107;
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            baseDrag = (0.0768 * Cl ** 5) - (0.3979 * Cl ** 4) + (0.8252 * Cl ** 3) - (0.7951 * Cl ** 2) + (0.3851 * Cl) + 0.0107;
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             break;
         case FlapConf.CONF_FULL:
             baseDrag = (0.017 * Cl ** 5) - (0.0978 * Cl ** 4) + (0.2308 * Cl ** 3) - (0.2278 * Cl ** 2) + (0.1157 * Cl) + 0.0682;

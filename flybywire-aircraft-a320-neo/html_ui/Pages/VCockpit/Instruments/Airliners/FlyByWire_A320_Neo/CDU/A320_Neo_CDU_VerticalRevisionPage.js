@@ -83,6 +83,7 @@ class CDUVerticalRevisionPage {
             }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             const altError = this.formatAltErrorTitleAndValue(waypoint, verticalWaypoint);
 
             const isCruiseAltEntered = mcdu._cruiseEntered && mcdu._cruiseFlightLevel;
@@ -147,6 +148,11 @@ class CDUVerticalRevisionPage {
                 };
             }
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            const altError = this.formatAltErrorTitleAndValue(waypoint, verticalWaypoint);
+
+            const isCruiseAltEntered = mcdu._cruiseEntered && mcdu._cruiseFlightLevel;
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             mcdu.setTemplate([
                 ["VERT REV {small}AT{end}{green} " + waypointIdent + "{end}"],
@@ -159,6 +165,7 @@ class CDUVerticalRevisionPage {
                 [speedConstraint ? speedConstraint + "[color]magenta" : "*[\xa0\xa0\xa0][color]cyan", altitudeConstraint ? altitudeConstraint + "[color]magenta" : "[\xa0\xa0\xa0\xa0]*[color]cyan"],
                 ["MACH/START WPT[color]inop", altError[0]],
                 [`\xa0{inop}[\xa0]/{small}${waypointIdent}{end}{end}`, altError[1]],
+<<<<<<< HEAD
                 [""],
                 ["<WIND", isCruiseAltEntered ? "STEP ALTS>" : ""],
 =======
@@ -169,6 +176,10 @@ class CDUVerticalRevisionPage {
                 [""],
                 ["<WIND/TEMP", r5Cell],
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+                [""],
+                ["<WIND", isCruiseAltEntered ? "STEP ALTS>" : ""],
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 [""],
                 [confirmConstraint ? "{amber}*CLB{end}" : "<RETURN", confirmConstraint ? "{amber}DES*{end}" : "", confirmConstraint ? "{amber}{small}OR{end}{end}" : ""]
             ]);
@@ -263,9 +274,12 @@ class CDUVerticalRevisionPage {
 
 <<<<<<< HEAD
                 mcdu.flightPlanManager.setWaypointSpeed(speed, mcdu.flightPlanManager.indexOfWaypoint(waypoint), () => {
+<<<<<<< HEAD
 =======
                 mcdu.flightPlanManager.setWaypointSpeed(speed, wpIndex, () => {
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                     this.ShowPage(mcdu, waypoint, verticalWaypoint, isDescentWaypoint);
                 }, constraintType === WaypointConstraintType.DES);
             }; // SPD CSTR

@@ -8,9 +8,13 @@ import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vna
 import { AtmosphericConditions } from '@fmgc/guidance/vnav/AtmosphericConditions';
 import { ManagedSpeedType, SpeedProfile } from '@fmgc/guidance/vnav/climb/SpeedProfile';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Constants } from '@shared/Constants';
 =======
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+import { Constants } from '@shared/Constants';
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 import { DescentStrategy, IdleDescentStrategy } from '@fmgc/guidance/vnav/descent/DescentStrategy';
 import { BaseGeometryProfile } from '@fmgc/guidance/vnav/profile/BaseGeometryProfile';
 import { AltitudeConstraintType } from '@fmgc/guidance/lnav/legs';

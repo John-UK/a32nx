@@ -381,9 +381,13 @@ class MarkerBeaconIndicator extends DisplayComponent<{ bus: EventBus }> {
 
         sub.on('markerBeacon').whenChanged().handle((markerState) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
             console.log(markerState);
 =======
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+            console.log(markerState);
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             if (markerState === 0) {
                 this.classNames.set(`${baseClass} HiddenElement`);
             } else if (markerState === 1) {

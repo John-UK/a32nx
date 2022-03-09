@@ -207,6 +207,9 @@ const EWDMessages = {
     '340024002': '\x1b<2m -VFE...............230',
     '770002701': '\x1b<2m\x1b4mENG\x1bm ALL ENGINES FAILURE',
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     '770002702': '\x1b<5m-EMER ELEC PWR...MAN ON',
     '770002703': '\x1b<5mOPT RELIGHT SPD.280/.77',
     '770002704': '\x1b<5mOPT RELIGHT SPD.300/.77',
@@ -217,6 +220,7 @@ const EWDMessages = {
     '770002709': '\x1b<5m-FAC 1......OFF THEN ON',
     '770002710': '\x1b<5mGLDG DIST: 2NM/1000FT',
     '770002711': '\x1b<5m-DIVERSION.....INITIATE',
+<<<<<<< HEAD
 =======
     '770002702': '\x1b<5m -EMER ELEC PWR...MAN ON',
     '770002703': '\x1b<5m OPT RELIGHT SPD.280/.77',
@@ -229,6 +233,8 @@ const EWDMessages = {
     '770002710': '\x1b<5m GLDG DIST: 2NM/1000FT',
     '770002711': '\x1b<5m -DIVERSION.....INITIATE',
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
     '770002712': '\x1b<5m-ALL ENG FAIL PROC.APPLY',
     '770064201': '\x1b<4m\x1b4mENG\x1bm THR LEVERS NOT SET',
     '770064202': '\x1b<5m -THR LEVERS.....TO/GA',

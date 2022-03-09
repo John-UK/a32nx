@@ -31,9 +31,12 @@ import { AircraftToDescentProfileRelation } from '@fmgc/guidance/vnav/descent/Ai
 import { WindProfileFactory } from '@fmgc/guidance/vnav/wind/WindProfileFactory';
 import { NavHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 import { Geometry } from '../Geometry';
 import { GuidanceComponent } from '../GuidanceComponent';
 import { NavGeometryProfile, VerticalCheckpointReason } from './profile/NavGeometryProfile';
@@ -158,6 +161,7 @@ export class VnavDriver implements GuidanceComponent {
                     this.computationParametersObserver.get().presentPosition,
                 );
                 this.windProfileFactory.updateAircraftDistanceFromStart(this.constraintReader.distanceToPresentPosition);
+<<<<<<< HEAD
 
                 this.computeVerticalProfileForMcdu(this.guidanceController.activeGeometry);
                 this.computeVerticalProfileForNd(this.guidanceController.activeGeometry);
@@ -166,6 +170,16 @@ export class VnavDriver implements GuidanceComponent {
                 this.descentGuidance.updateProfile(this.currentNavGeometryProfile);
                 this.guidanceController.pseudoWaypoints.acceptVerticalProfile();
 
+=======
+
+                this.computeVerticalProfileForMcdu(this.guidanceController.activeGeometry);
+                this.computeVerticalProfileForNd(this.guidanceController.activeGeometry);
+
+                this.stepCoordinator.updateGeometryProfile(this.currentNavGeometryProfile);
+                this.descentGuidance.updateProfile(this.currentNavGeometryProfile);
+                this.guidanceController.pseudoWaypoints.acceptVerticalProfile();
+
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 this.version++;
             }
 
@@ -203,6 +217,7 @@ export class VnavDriver implements GuidanceComponent {
         const stepDescentStrategy = new VerticalSpeedStrategy(this.computationParametersObserver, this.atmosphericConditions, -1000);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         const climbWinds = this.windProfileFactory.getClimbWinds();
         const descentWinds = this.windProfileFactory.getDescentWinds();
 =======
@@ -210,6 +225,10 @@ export class VnavDriver implements GuidanceComponent {
         const cruiseWinds = new HeadwindProfile(this.windProfileFactory.getCruiseWinds(), this.headingProfile);
         const descentWinds = new HeadwindProfile(this.windProfileFactory.getDescentWinds(), this.headingProfile);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+        const climbWinds = this.windProfileFactory.getClimbWinds();
+        const descentWinds = this.windProfileFactory.getDescentWinds();
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
         if (fromFlightPhase < FmgcFlightPhase.Climb) {
             this.takeoffPathBuilder.buildTakeoffPath(profile);
@@ -225,11 +244,15 @@ export class VnavDriver implements GuidanceComponent {
 
         if (fromFlightPhase < FmgcFlightPhase.Cruise) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             this.climbPathBuilder.computeClimbPath(profile, managedClimbStrategy, this.currentMcduSpeedProfile, climbWinds, this.headingProfile, cruiseAltitude);
         }
 
         if (profile instanceof NavGeometryProfile && this.cruiseToDescentCoordinator.canCompute(profile)) {
             this.cruiseToDescentCoordinator.buildCruiseAndDescentPath(profile, this.currentMcduSpeedProfile, descentWinds, this.headingProfile, managedClimbStrategy, stepDescentStrategy);
+<<<<<<< HEAD
 =======
             this.climbPathBuilder.computeClimbPath(profile, managedClimbStrategy, this.currentMcduSpeedProfile, climbWinds, cruiseAltitude);
         }
@@ -237,6 +260,8 @@ export class VnavDriver implements GuidanceComponent {
         if (profile instanceof NavGeometryProfile && this.cruiseToDescentCoordinator.canCompute(profile)) {
             this.cruiseToDescentCoordinator.buildCruiseAndDescentPath(profile, this.currentMcduSpeedProfile, cruiseWinds, descentWinds, managedClimbStrategy, stepDescentStrategy);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             if (this.currentMcduSpeedProfile.shouldTakeSpeedLimitIntoAccount()) {
                 this.cruiseToDescentCoordinator.addSpeedLimitAsCheckpoint(profile);
@@ -252,6 +277,7 @@ export class VnavDriver implements GuidanceComponent {
         if (geometry.legs.size <= 0 || !this.computationParametersObserver.canComputeProfile()) {
             return;
         }
+<<<<<<< HEAD
 
         console.time('VNAV computation');
         // TODO: This is where the return to trajectory would go:
@@ -264,6 +290,20 @@ export class VnavDriver implements GuidanceComponent {
 
         this.finishProfileInManagedModes(this.currentNavGeometryProfile, Math.max(FmgcFlightPhase.Takeoff, flightPhase));
 
+=======
+
+        console.time('VNAV computation');
+        // TODO: This is where the return to trajectory would go:
+        if (flightPhase >= FmgcFlightPhase.Climb) {
+            this.currentNavGeometryProfile.addPresentPositionCheckpoint(
+                presentPosition,
+                fuelOnBoard,
+            );
+        }
+
+        this.finishProfileInManagedModes(this.currentNavGeometryProfile, Math.max(FmgcFlightPhase.Takeoff, flightPhase));
+
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         this.currentNavGeometryProfile.finalizeProfile();
 
         console.timeEnd('VNAV computation');
@@ -323,6 +363,7 @@ export class VnavDriver implements GuidanceComponent {
                 : new ClimbThrustClimbStrategy(this.computationParametersObserver, this.atmosphericConditions);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             const climbWinds = this.windProfileFactory.getClimbWinds();
 
             this.climbPathBuilder.computeClimbPath(this.currentNdGeometryProfile, climbStrategy, speedProfile, climbWinds, this.headingProfile, fcuAltitude);
@@ -333,6 +374,12 @@ export class VnavDriver implements GuidanceComponent {
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         } else if (tacticalDescentModes.includes(fcuVerticalMode) || fcuVerticalMode === VerticalMode.VS && fcuVerticalSpeed < 0) {
             // The idea here is that we compute a profile to FCU alt in the current modes, find the intercept with the managed profile. And then compute the managed profile from there.
+=======
+            const climbWinds = this.windProfileFactory.getClimbWinds();
+
+            this.climbPathBuilder.computeClimbPath(this.currentNdGeometryProfile, climbStrategy, speedProfile, climbWinds, this.headingProfile, fcuAltitude);
+        } else if (tacticalDescentModes.includes(fcuVerticalMode) || fcuVerticalMode === VerticalMode.VS && fcuVerticalSpeed < 0) {
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             const descentStrategy = this.getAppropriateTacticalDescentStrategy(fcuVerticalMode, fcuVerticalSpeed);
 
             this.tacticalDescentPathBuilder.buildTacticalDescentPath(this.currentNdGeometryProfile, descentStrategy, speedProfile, fcuAltitude);
@@ -367,7 +414,11 @@ export class VnavDriver implements GuidanceComponent {
         if (fcuVerticalMode === VerticalMode.DES) {
             const vdev = this.aircraftToDescentProfileRelation.computeLinearDeviation();
 
+<<<<<<< HEAD
             if (vdev > 0 && this.aircraftToDescentProfileRelation.isPastTopOfDescent()) {
+=======
+            if (vdev > 0) {
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
                 return new IdleDescentStrategy(
                     this.computationParametersObserver,
                     this.atmosphericConditions,
@@ -428,16 +479,22 @@ export class VnavDriver implements GuidanceComponent {
             const expediteGeometryProfile = new SelectedGeometryProfile();
             const climbStrategy = new ClimbThrustClimbStrategy(this.computationParametersObserver, this.atmosphericConditions);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
             const climbWinds = this.windProfileFactory.getClimbWinds();
 
             expediteGeometryProfile.addPresentPositionCheckpoint(presentPosition, fuelOnBoard);
             this.climbPathBuilder.computeClimbPath(expediteGeometryProfile, climbStrategy, selectedSpeedProfile, climbWinds, this.headingProfile, fcuAltitude);
+<<<<<<< HEAD
 =======
             const climbWinds = new HeadwindProfile(this.windProfileFactory.getClimbWinds(), this.headingProfile);
 
             expediteGeometryProfile.addPresentPositionCheckpoint(presentPosition, fuelOnBoard);
             this.climbPathBuilder.computeClimbPath(expediteGeometryProfile, climbStrategy, selectedSpeedProfile, climbWinds, fcuAltitude);
 >>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
 
             expediteGeometryProfile.finalizeProfile();
 
@@ -524,10 +581,13 @@ export class VnavDriver implements GuidanceComponent {
             this.currentNavGeometryProfile.checkpoints.filter(({ reason }) => reason !== VerticalCheckpointReason.PresentPosition),
         );
 
+<<<<<<< HEAD
         if (!intercept) {
             return;
         }
 
+=======
+>>>>>>> e32af2103bd1f998ea7bb776765d1a8c79d006c3
         // Only draw intercept if it's far enough away
         const reason = isInManagedDes ? VerticalCheckpointReason.InterceptDescentProfileManaged : VerticalCheckpointReason.InterceptDescentProfileSelected;
         this.currentNdGeometryProfile.addInterpolatedCheckpoint(intercept, { reason });
