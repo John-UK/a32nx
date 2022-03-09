@@ -6,8 +6,12 @@ import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vna
 import { GeometricPathBuilder } from '@fmgc/guidance/vnav/descent/GeometricPathBuilder';
 import { DescentStrategy, IdleDescentStrategy } from '@fmgc/guidance/vnav/descent/DescentStrategy';
 import { StepResults } from '@fmgc/guidance/vnav/Predictions';
+<<<<<<< HEAD
 import { AircraftHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
 import { WindProfile } from '@fmgc/guidance/vnav/wind/WindProfile';
+=======
+import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
 export class DescentPathBuilder {
     private geometricPathBuilder: GeometricPathBuilder;
@@ -33,8 +37,12 @@ export class DescentPathBuilder {
     computeManagedDescentPath(
         profile: BaseGeometryProfile,
         speedProfile: SpeedProfile,
+<<<<<<< HEAD
         windProfile: WindProfile,
         headingProfile: AircraftHeadingProfile,
+=======
+        windProfile: HeadwindProfile,
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         cruiseAltitude: Feet,
     ): VerticalCheckpoint {
         const decelCheckpoint = profile.checkpoints.find((checkpoint) => checkpoint.reason === VerticalCheckpointReason.Decel);
@@ -43,13 +51,21 @@ export class DescentPathBuilder {
             return undefined;
         }
 
+<<<<<<< HEAD
         this.geometricPathBuilder.buildGeometricPath(profile, speedProfile, headingProfile, windProfile, cruiseAltitude);
+=======
+        this.geometricPathBuilder.buildGeometricPath(profile, speedProfile, windProfile, cruiseAltitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
         const geometricPathStart = profile.findVerticalCheckpoint(VerticalCheckpointReason.GeometricPathStart);
 
         if (geometricPathStart) {
             // The last checkpoint here is the start of the Geometric path
+<<<<<<< HEAD
             this.buildIdlePath(profile, speedProfile, windProfile, headingProfile, cruiseAltitude);
+=======
+            this.buildIdlePath(profile, speedProfile, windProfile, cruiseAltitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             const tod = profile.lastCheckpoint;
 
             // TODO: This should not be here ideally
@@ -63,7 +79,11 @@ export class DescentPathBuilder {
         return undefined;
     }
 
+<<<<<<< HEAD
     private buildIdlePath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, windProfile: WindProfile, headingProfile: AircraftHeadingProfile, topOfDescentAltitude: Feet): void {
+=======
+    private buildIdlePath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, windProfile: HeadwindProfile, topOfDescentAltitude: Feet): void {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         // Assume the last checkpoint is the start of the geometric path
         profile.addCheckpointFromLast((lastCheckpoint) => ({ ...lastCheckpoint, reason: VerticalCheckpointReason.IdlePathEnd }));
 
@@ -83,7 +103,11 @@ export class DescentPathBuilder {
             const speedTargetBeforeCurrentPosition = speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
             // It is safe to use the current altitude here. This way, the speed limit will certainly be obeyed
             if (speedTargetBeforeCurrentPosition - speed > 1) {
+<<<<<<< HEAD
                 const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude, headingProfile.get(distanceFromStart));
+=======
+                const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
                 const decelerationStep = this.idleDescentStrategy.predictToSpeedBackwards(
                     altitude,
@@ -99,7 +123,11 @@ export class DescentPathBuilder {
                 continue;
             }
 
+<<<<<<< HEAD
             const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude, headingProfile.get(distanceFromStart));
+=======
+            const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             const descentStep = this.idleDescentStrategy.predictToDistanceBackwards(
                 altitude,
                 profile.lastCheckpoint.distanceFromStart - constraint.distanceFromStart,
@@ -121,7 +149,11 @@ export class DescentPathBuilder {
             const speedTarget = speedProfile.getTarget(distanceFromStart - 1e-4, altitude, ManagedSpeedType.Descent);
 
             if ((speedTarget - speed) > 1) {
+<<<<<<< HEAD
                 const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude, headingProfile.get(distanceFromStart));
+=======
+                const headwind = windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 const decelerationStep = this.idleDescentStrategy.predictToSpeedBackwards(altitude, speed, speedTarget, managedDescentSpeedMach, remainingFuelOnBoard, headwind);
 
                 // If we shoot through the final altitude trying to accelerate, pretend we didn't accelerate all the way
@@ -140,11 +172,15 @@ export class DescentPathBuilder {
                 continue;
             }
 
+<<<<<<< HEAD
             const headwind = windProfile.getHeadwindComponent(
                 profile.lastCheckpoint.distanceFromStart,
                 profile.lastCheckpoint.altitude,
                 headingProfile.get(profile.lastCheckpoint.distanceFromStart),
             );
+=======
+            const headwind = windProfile.getHeadwindComponent(profile.lastCheckpoint.distanceFromStart, profile.lastCheckpoint.altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
             const step = this.idleDescentStrategy.predictToAltitude(startingAltitudeForSegment, altitude, speed, managedDescentSpeedMach, remainingFuelOnBoard, headwind);
             this.addCheckpointFromStepBackwards(profile, step, VerticalCheckpointReason.IdlePathAtmosphericConditions);

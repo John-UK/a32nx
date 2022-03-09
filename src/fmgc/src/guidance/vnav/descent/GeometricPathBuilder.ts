@@ -8,8 +8,12 @@ import { BaseGeometryProfile } from '@fmgc/guidance/vnav/profile/BaseGeometryPro
 import { DescentAltitudeConstraint, VerticalCheckpoint, VerticalCheckpointReason } from '@fmgc/guidance/vnav/profile/NavGeometryProfile';
 import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vnav/VerticalProfileComputationParameters';
 import { VnavConfig } from '@fmgc/guidance/vnav/VnavConfig';
+<<<<<<< HEAD
 import { AircraftHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
 import { WindProfile } from '@fmgc/guidance/vnav/wind/WindProfile';
+=======
+import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
 export class GeometricPathBuilder {
     constructor(
@@ -17,7 +21,11 @@ export class GeometricPathBuilder {
         private atmosphericConditions: AtmosphericConditions,
     ) { }
 
+<<<<<<< HEAD
     buildGeometricPath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, headingProfile: AircraftHeadingProfile, windProfile: WindProfile, finalCruiseAltitude: Feet) {
+=======
+    buildGeometricPath(profile: BaseGeometryProfile, speedProfile: SpeedProfile, windProfile: HeadwindProfile, finalCruiseAltitude: Feet) {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         const constraintsToUse = profile.descentAltitudeConstraints
             .slice()
             .filter(
@@ -30,7 +38,10 @@ export class GeometricPathBuilder {
         const planner = new GeometricPathPlanner(
             this.observer,
             this.atmosphericConditions,
+<<<<<<< HEAD
             headingProfile,
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             windProfile,
             speedProfile,
             constraintsToUse,
@@ -84,8 +95,12 @@ class GeometricPathPlanner {
     constructor(
         private observer: VerticalProfileComputationParametersObserver,
         private atmosphericConditions: AtmosphericConditions,
+<<<<<<< HEAD
         private headingProfile: AircraftHeadingProfile,
         private windProfile: WindProfile,
+=======
+        private windProfile: HeadwindProfile,
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         private speedProfile: SpeedProfile,
         private constraints: DescentAltitudeConstraint[],
         private startingPoint: VerticalCheckpoint,
@@ -182,7 +197,11 @@ class GeometricPathPlanner {
 
         const stepSpeed = this.speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
 
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
         const step = Predictions.geometricStep(
             constraint.constraint.altitude1,
@@ -253,7 +272,11 @@ class GeometricPathPlanner {
         const stepSpeed = this.speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
         const stepSpeedMach = this.atmosphericConditions.computeMachFromCas(altitude, stepSpeed);
 
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
         const step = Predictions.reverseDistanceStep(
             altitude,
@@ -294,7 +317,11 @@ class GeometricPathPlanner {
 
         const stepSpeed = this.speedProfile.getTarget(constraint.distanceFromStart, altitude, ManagedSpeedType.Descent);
 
+<<<<<<< HEAD
         const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude, this.headingProfile.get(distanceFromStart));
+=======
+        const headwind = this.windProfile.getHeadwindComponent(distanceFromStart, altitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
         const step = Predictions.geometricStep(
             alitudeToStartDescentFrom,

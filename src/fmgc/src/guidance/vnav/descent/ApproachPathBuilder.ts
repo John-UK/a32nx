@@ -7,7 +7,10 @@ import { DescentAltitudeConstraint, NavGeometryProfile, VerticalCheckpoint, Vert
 import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vnav/VerticalProfileComputationParameters';
 import { AtmosphericConditions } from '@fmgc/guidance/vnav/AtmosphericConditions';
 import { ManagedSpeedType, SpeedProfile } from '@fmgc/guidance/vnav/climb/SpeedProfile';
+<<<<<<< HEAD
 import { Constants } from '@shared/Constants';
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 import { DescentStrategy, IdleDescentStrategy } from '@fmgc/guidance/vnav/descent/DescentStrategy';
 import { BaseGeometryProfile } from '@fmgc/guidance/vnav/profile/BaseGeometryProfile';
 import { AltitudeConstraintType } from '@fmgc/guidance/lnav/legs';

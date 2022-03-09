@@ -60,23 +60,24 @@ export class Predictions {
         perfFactorPercent: number = 0,
     ): StepResults {
         const midStepAltitude = initialAltitude + (stepSize / 2);
+<<<<<<< HEAD
         const descending = (initialAltitude + stepSize) - initialAltitude < 0;
 
         const theta = Common.getTheta(midStepAltitude, isaDev);
         const delta = Common.getDelta(midStepAltitude);
+=======
+
+        const theta = Common.getTheta(midStepAltitude, isaDev, midStepAltitude > tropoAltitude);
+        const delta = Common.getDelta(midStepAltitude, midStepAltitude > tropoAltitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         let mach = Common.CAStoMach(econCAS, delta);
 
-        let eas;
-        let tas;
-        let usingMach = false;
+        let tas: Knots;
         // If above crossover altitude, use econMach
         if (mach > econMach) {
             mach = econMach;
-            eas = Common.machToEAS(mach, delta);
             tas = Common.machToTAS(mach, theta);
-            usingMach = true;
         } else {
-            eas = Common.CAStoEAS(econCAS, delta);
             tas = Common.CAStoTAS(econCAS, theta, delta);
         }
 
@@ -177,6 +178,7 @@ export class Predictions {
             const delta = Common.getDelta(midStepAltitude, midStepAltitude > tropoAltitude);
             let mach = Common.CAStoMach(econCAS, delta);
 
+<<<<<<< HEAD
             let eas;
             let tas;
             let usingMach = false;
@@ -188,6 +190,14 @@ export class Predictions {
                 usingMach = true;
             } else {
                 eas = Common.CAStoEAS(econCAS, delta);
+=======
+            let tas: Knots;
+            // If above crossover altitude, use econMach
+            if (mach > econMach) {
+                mach = econMach;
+                tas = Common.machToTAS(mach, theta);
+            } else {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 tas = Common.CAStoTAS(econCAS, theta, delta);
             }
 
@@ -275,6 +285,7 @@ export class Predictions {
             const delta = Common.getDelta(initialAltitude, initialAltitude > tropoAltitude);
             let mach = Common.CAStoMach(econCAS, delta);
 
+<<<<<<< HEAD
             let eas;
             let tas;
             let usingMach = false;
@@ -286,6 +297,14 @@ export class Predictions {
                 usingMach = true;
             } else {
                 eas = Common.CAStoEAS(econCAS, delta);
+=======
+            let tas: Knots;
+            // If above crossover altitude, use econMach
+            if (mach > econMach) {
+                mach = econMach;
+                tas = Common.machToTAS(mach, theta);
+            } else {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 tas = Common.CAStoTAS(econCAS, theta, delta);
             }
 
@@ -352,7 +371,7 @@ export class Predictions {
         const delta = Common.getDelta(altitude);
         let mach = Common.CAStoMach(econCAS, delta);
 
-        let tas;
+        let tas: Knots;
         // If above crossover altitude, use econMach
         if (mach > econMach) {
             mach = econMach;
@@ -422,39 +441,31 @@ export class Predictions {
         flapConfig = FlapConf.CLEAN,
         minimumAbsoluteAcceleration?: number,
     ): StepResults {
-        const theta = Common.getTheta(initialAltitude, isaDev);
-        const delta = Common.getDelta(initialAltitude);
+        const theta = Common.getTheta(initialAltitude, isaDev, initialAltitude > tropoAltitude);
+        const delta = Common.getDelta(initialAltitude, initialAltitude > tropoAltitude);
 
         let actualInitialMach = Common.CAStoMach(initialCAS, delta);
         let actualFinalMach = Common.CAStoMach(finalCAS, delta);
-        let initialTas;
-        let finalTas;
-        // let initialEas;
-        // let finalEas;
+        let initialTas: Knots;
+        let finalTas: Knots;
 
+<<<<<<< HEAD
         // let usingMachAtStart: boolean;
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         // If above crossover altitude, use mach
         if (actualInitialMach > initialMach) {
             actualInitialMach = initialMach;
             initialTas = Common.machToTAS(actualInitialMach, theta);
-            // initialEas = Common.machToEAS(actualInitialMach, delta);
-            // usingMachAtStart = true;
         } else {
             initialTas = Common.CAStoTAS(initialCAS, theta, delta);
-            // initialEas = Common.CAStoEAS(initialCAS, delta);
-            // usingMachAtStart = false;
         }
 
-        // let usingMachAtEnd;
         if (actualFinalMach > finalMach) {
             actualFinalMach = finalMach;
             finalTas = Common.machToTAS(actualFinalMach, theta);
-            // finalEas = Common.machToEAS(actualFinalMach, delta);
-            // usingMachAtEnd = true;
         } else {
             finalTas = Common.CAStoTAS(finalCAS, theta, delta);
-            // finalEas = Common.CAStoEAS(finalCAS, delta);
-            // usingMachAtEnd = false;
         }
 
         const averageMach = (actualInitialMach + actualFinalMach) / 2;
@@ -495,6 +506,7 @@ export class Predictions {
                 error = VnavStepError.AVAILABLE_GRADIENT_INSUFFICIENT;
             }
 
+<<<<<<< HEAD
             // TODO: Put this back in
             // const accelFactorMode = usingMachAtStart ? AccelFactorMode.CONSTANT_MACH : AccelFactorMode.CONSTANT_CAS;
             // const accelFactor = Common.getAccelerationFactor(averageMach,
@@ -503,6 +515,9 @@ export class Predictions {
             //     initialAltitude > tropoAltitude,
             //     accelFactorMode);
 
+=======
+            // TODO: Why are we using 10 here?
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             const acceleration = FlightModel.accelerationForGradient(
                 availableGradient,
                 pathAngleRadians,
@@ -652,7 +667,11 @@ export class Predictions {
         const theta2 = Common.getTheta2(theta, mach);
         const delta2 = Common.getDelta2(delta, mach);
 
+<<<<<<< HEAD
         let thrust;
+=======
+        let thrust: number; // In lbs force
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         let verticalSpeed: FeetPerMinute;
         let stepTime: Seconds;
         let fuelBurned: Pounds;
@@ -705,6 +724,7 @@ export class Predictions {
         };
     }
 
+<<<<<<< HEAD
     // static constantSlopeSegment(
     //
     // ): StepResults {
@@ -713,6 +733,8 @@ export class Predictions {
     //     // d = ((final velocity squared) - (initial velocity squared)) / (2 * a)
     // }
 
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
     static verticalSpeedStep(
         initialAltitude: number,
         finalAltitude: number,
@@ -767,6 +789,7 @@ export class Predictions {
             previousMidstepWeight = midstepWeight;
             midstepWeight -= (fuelBurned / 2);
         } while (++iterations < 4 && Math.abs(previousMidstepWeight - midstepWeight) > 100);
+<<<<<<< HEAD
 
         return {
             pathAngle: pathAngle * MathUtils.RADIANS_TO_DEGREES,
@@ -820,6 +843,61 @@ export class Predictions {
                 tas = Common.CAStoTAS(econCAS, theta, delta);
             }
 
+=======
+
+        return {
+            pathAngle: pathAngle * MathUtils.RADIANS_TO_DEGREES,
+            verticalSpeed,
+            distanceTraveled,
+            fuelBurned,
+            timeElapsed: stepTime,
+            finalAltitude,
+            predictedN1,
+            speed: econCAS,
+        };
+    }
+
+    static verticalSpeedDistanceStep(
+        initialAltitude: number,
+        distance: NauticalMiles,
+        verticalSpeed: number,
+        econCAS: number,
+        econMach: number,
+        zeroFuelWeight: number,
+        initialFuelWeight: number,
+        isaDev: number,
+        headwind: number,
+        perfFactorPercent: number,
+    ): StepResults & { predictedN1: number } {
+        let finalAltitude = initialAltitude;
+        let previousFinalAltitude = finalAltitude;
+
+        let pathAngle: Radians = 0;
+        let stepTime: Seconds = 0;
+        let fuelBurned: Pounds = 0;
+        let iterations = 0;
+        let midstepWeight: Pounds = zeroFuelWeight + initialFuelWeight;
+        let predictedN1 = 0;
+        do {
+            const midStepAltitude = (initialAltitude + finalAltitude) / 2;
+
+            const theta = Common.getTheta(midStepAltitude, isaDev);
+            const delta = Common.getDelta(midStepAltitude);
+
+            let mach = Common.CAStoMach(econCAS, delta);
+            const delta2 = Common.getDelta2(delta, mach);
+            const theta2 = Common.getTheta2(theta, mach);
+
+            let tas: Knots;
+            // If above crossover altitude, use econMach
+            if (mach > econMach) {
+                mach = econMach;
+                tas = Common.machToTAS(mach, theta);
+            } else {
+                tas = Common.CAStoTAS(econCAS, theta, delta);
+            }
+
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             // TODO: Use headwind
             pathAngle = Math.atan2(verticalSpeed, tas * 101.269); // radians
             stepTime = (tas - headwind) !== 0 ? 3600 * distance / (tas - headwind) : 0;
@@ -889,12 +967,16 @@ export class Predictions {
             let initialMach = Common.CAStoMach(initialCAS, delta);
             let finalMach = Common.CAStoMach(finalCAS, delta);
 
+<<<<<<< HEAD
             let initialEas: Knots;
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             let initialTas: Knots;
             let usingMach = false;
             // If above crossover altitude, use econMach
             if (initialMach > econMach) {
                 initialMach = econMach;
+<<<<<<< HEAD
                 initialEas = Common.machToEAS(initialMach, delta);
                 initialTas = Common.machToTAS(initialMach, theta);
                 usingMach = true;
@@ -911,6 +993,19 @@ export class Predictions {
                 finalTas = Common.machToTAS(finalMach, theta);
             } else {
                 finalEas = Common.CAStoEAS(finalCAS, delta);
+=======
+                initialTas = Common.machToTAS(initialMach, theta);
+                usingMach = true;
+            } else {
+                initialTas = Common.CAStoTAS(initialCAS, theta, delta);
+            }
+
+            let finalTas: Knots;
+            if (finalMach > econMach) {
+                finalMach = econMach;
+                finalTas = Common.machToTAS(finalMach, theta);
+            } else {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 finalTas = Common.CAStoTAS(finalCAS, theta, delta);
             }
 
@@ -996,12 +1091,16 @@ export class Predictions {
             let initialMach = Common.CAStoMach(initialCAS, delta);
             let finalMach = Common.CAStoMach(finalCAS, delta);
 
+<<<<<<< HEAD
             let initialEas: Knots;
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             let initialTas: Knots;
             let usingMach = false;
             // If above crossover altitude, use econMach
             if (initialMach > econMach) {
                 initialMach = econMach;
+<<<<<<< HEAD
                 initialEas = Common.machToEAS(initialMach, delta);
                 initialTas = Common.machToTAS(initialMach, theta);
                 usingMach = true;
@@ -1011,14 +1110,27 @@ export class Predictions {
             }
 
             let finalEas: Knots;
+=======
+                initialTas = Common.machToTAS(initialMach, theta);
+                usingMach = true;
+            } else {
+                initialTas = Common.CAStoTAS(initialCAS, theta, delta);
+            }
+
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             let finalTas: Knots;
             // If above crossover altitude, use econMach
             if (finalMach > econMach) {
                 finalMach = econMach;
+<<<<<<< HEAD
                 finalEas = Common.machToEAS(finalMach, delta);
                 finalTas = Common.machToTAS(finalMach, theta);
             } else {
                 finalEas = Common.CAStoEAS(finalCAS, delta);
+=======
+                finalTas = Common.machToTAS(finalMach, theta);
+            } else {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 finalTas = Common.CAStoTAS(finalCAS, theta, delta);
             }
 
@@ -1104,12 +1216,16 @@ export class Predictions {
             let initialMach = Common.CAStoMach(initialCAS, delta);
             let finalMach = Common.CAStoMach(finalCAS, delta);
 
+<<<<<<< HEAD
             let initialEas: Knots;
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             let initialTas: Knots;
             let usingMach = false;
             // If above crossover altitude, use econMach
             if (initialMach > econMach) {
                 initialMach = econMach;
+<<<<<<< HEAD
                 initialEas = Common.machToEAS(initialMach, delta);
                 initialTas = Common.machToTAS(initialMach, theta);
                 usingMach = true;
@@ -1119,14 +1235,27 @@ export class Predictions {
             }
 
             let finalEas: Knots;
+=======
+                initialTas = Common.machToTAS(initialMach, theta);
+                usingMach = true;
+            } else {
+                initialTas = Common.CAStoTAS(initialCAS, theta, delta);
+            }
+
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             let finalTas: Knots;
             // If above crossover altitude, use econMach
             if (finalMach > econMach) {
                 finalMach = econMach;
+<<<<<<< HEAD
                 finalEas = Common.machToEAS(finalMach, delta);
                 finalTas = Common.machToTAS(finalMach, theta);
             } else {
                 finalEas = Common.CAStoEAS(finalCAS, delta);
+=======
+                finalTas = Common.machToTAS(finalMach, theta);
+            } else {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 finalTas = Common.CAStoTAS(finalCAS, theta, delta);
             }
 

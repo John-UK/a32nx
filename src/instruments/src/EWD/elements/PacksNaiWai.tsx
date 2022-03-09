@@ -14,15 +14,30 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
     const [engine1AntiIce] = useSimVar('L:XMLVAR_Momentary_PUSH_OVHD_ANTIICE_ENG1_Pressed', 'number', 500);
     const [engine2AntiIce] = useSimVar('L:XMLVAR_Momentary_PUSH_OVHD_ANTIICE_ENG2_Pressed', 'number', 500);
     const [wingAntiIce] = useSimVar('L:XMLVAR_Momentary_PUSH_OVHD_ANTIICE_WING_Pressed', 'bool', 500);
+<<<<<<< HEAD
 
     const messageStrings = [
         { name: 'PACKS', show: packs1Supplying || packs2Supplying },
+=======
+    const [left1LandingGear] = useSimVar('L:A32NX_LGCIU_1_LEFT_GEAR_COMPRESSED', 'bool', 500);
+    const [right1LandingGear] = useSimVar('L:A32NX_LGCIU_1_RIGHT_GEAR_COMPRESSED', 'bool', 500);
+    const onGround = left1LandingGear === 1 && right1LandingGear === 1;
+    const [engine1State] = useSimVar('L:A32NX_ENGINE_STATE:1', 'enum', 500);
+    const [engine2State] = useSimVar('L:A32NX_ENGINE_STATE:2', 'enum', 500);
+    const [throttle1Position] = useSimVar('L:XMLVAR_Throttle1Position', 'number', 500);
+    const [throttle2Position] = useSimVar('L:XMLVAR_Throttle2Position', 'number', 500);
+    const [apuBleedPressure] = useSimVar('L:APU_BLEED_PRESSURE', 'psi', 500);
+
+    const messageStrings = [
+        { name: 'PACKS', show: (packs1Supplying || packs2Supplying) && apuBleedPressure === 0 },
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         { name: 'NAI', show: engine1AntiIce || engine2AntiIce },
         { name: 'WAI', show: wingAntiIce },
     ];
 
     const finalMessageString = messageStrings.filter((item) => item.show).map((item) => item.name).join('/');
 
+<<<<<<< HEAD
     const showMessage = !!(flightPhase === 2
     || (autoThrustMode >= 1 && autoThrustMode <= 4)
     || (flightPhase >= 5 && flightPhase <= 7 && autoThrustMode === 5));
@@ -34,6 +49,18 @@ const PacksNaiWai: React.FC<PacksNaiWaiProps> = ({ x, y, flightPhase }) => {
 
         <text className="Green Large End" x={x} y={y}>{finalMessageString}</text>
 
+=======
+    const showMessage = !!(
+        [3, 4].includes(throttle1Position) || [3, 4].includes(throttle1Position)
+        || (onGround && (engine1State === 1 || engine2State === 1))
+    || (autoThrustMode >= 1 && autoThrustMode <= 4 && (throttle1Position === 2 || throttle2Position === 2))
+    || (flightPhase >= 5 && flightPhase <= 7 && autoThrustMode === 5));
+
+    return (
+        (showMessage
+            ? <text className="Green Large End" x={x} y={y}>{finalMessageString}</text>
+            : null)
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
     );
 };
 

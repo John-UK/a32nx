@@ -1,5 +1,8 @@
 import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vnav/VerticalProfileComputationParameters';
+<<<<<<< HEAD
 import { Constants } from '@shared/Constants';
+=======
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 import { DescentStrategy } from '@fmgc/guidance/vnav/descent/DescentStrategy';
 import { WindComponent } from '@fmgc/guidance/vnav/wind';
 import { EngineModel } from '../EngineModel';
@@ -82,11 +85,19 @@ export class VerticalSpeedStrategy implements ClimbStrategy, DescentStrategy {
         );
     }
 
+<<<<<<< HEAD
     predictToDistanceBackwards(finalAltitude: number, distance: NauticalMiles, speed: Knots, mach: Mach, fuelOnBoard: number): StepResults {
         throw new Error('[FMS/VNAV] Backwards distance predictions not implemented for V/S strategy');
     }
 
     predictToSpeedBackwards(finalAltitude: number, finalSpeed: Knots, speed: Knots, mach: Mach, fuelOnBoard: number): StepResults {
+=======
+    predictToDistanceBackwards(_finalAltitude: number, _distance: NauticalMiles, _speed: Knots, _mach: Mach, _fuelOnBoard: number): StepResults {
+        throw new Error('[FMS/VNAV] Backwards distance predictions not implemented for V/S strategy');
+    }
+
+    predictToSpeedBackwards(_finalAltitude: number, _finalSpeed: Knots, _speed: Knots, _mach: Mach, _fuelOnBoard: number): StepResults {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         throw new Error('[FMS/VNAV] Backwards speed predictions not implemented for V/S strategy');
     }
 }

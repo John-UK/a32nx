@@ -30,6 +30,10 @@ import { FlapConf } from '@fmgc/guidance/vnav/common';
 import { AircraftToDescentProfileRelation } from '@fmgc/guidance/vnav/descent/AircraftToProfileRelation';
 import { WindProfileFactory } from '@fmgc/guidance/vnav/wind/WindProfileFactory';
 import { NavHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
+<<<<<<< HEAD
+=======
+import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 import { Geometry } from '../Geometry';
 import { GuidanceComponent } from '../GuidanceComponent';
 import { NavGeometryProfile, VerticalCheckpointReason } from './profile/NavGeometryProfile';
@@ -198,8 +202,14 @@ export class VnavDriver implements GuidanceComponent {
         const managedClimbStrategy = new ClimbThrustClimbStrategy(this.computationParametersObserver, this.atmosphericConditions);
         const stepDescentStrategy = new VerticalSpeedStrategy(this.computationParametersObserver, this.atmosphericConditions, -1000);
 
+<<<<<<< HEAD
         const climbWinds = this.windProfileFactory.getClimbWinds();
         const descentWinds = this.windProfileFactory.getDescentWinds();
+=======
+        const climbWinds = new HeadwindProfile(this.windProfileFactory.getClimbWinds(), this.headingProfile);
+        const cruiseWinds = new HeadwindProfile(this.windProfileFactory.getCruiseWinds(), this.headingProfile);
+        const descentWinds = new HeadwindProfile(this.windProfileFactory.getDescentWinds(), this.headingProfile);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
         if (fromFlightPhase < FmgcFlightPhase.Climb) {
             this.takeoffPathBuilder.buildTakeoffPath(profile);
@@ -214,11 +224,19 @@ export class VnavDriver implements GuidanceComponent {
         );
 
         if (fromFlightPhase < FmgcFlightPhase.Cruise) {
+<<<<<<< HEAD
             this.climbPathBuilder.computeClimbPath(profile, managedClimbStrategy, this.currentMcduSpeedProfile, climbWinds, this.headingProfile, cruiseAltitude);
         }
 
         if (profile instanceof NavGeometryProfile && this.cruiseToDescentCoordinator.canCompute(profile)) {
             this.cruiseToDescentCoordinator.buildCruiseAndDescentPath(profile, this.currentMcduSpeedProfile, descentWinds, this.headingProfile, managedClimbStrategy, stepDescentStrategy);
+=======
+            this.climbPathBuilder.computeClimbPath(profile, managedClimbStrategy, this.currentMcduSpeedProfile, climbWinds, cruiseAltitude);
+        }
+
+        if (profile instanceof NavGeometryProfile && this.cruiseToDescentCoordinator.canCompute(profile)) {
+            this.cruiseToDescentCoordinator.buildCruiseAndDescentPath(profile, this.currentMcduSpeedProfile, cruiseWinds, descentWinds, managedClimbStrategy, stepDescentStrategy);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
             if (this.currentMcduSpeedProfile.shouldTakeSpeedLimitIntoAccount()) {
                 this.cruiseToDescentCoordinator.addSpeedLimitAsCheckpoint(profile);
@@ -304,9 +322,15 @@ export class VnavDriver implements GuidanceComponent {
                 ? new VerticalSpeedStrategy(this.computationParametersObserver, this.atmosphericConditions, fcuVerticalSpeed)
                 : new ClimbThrustClimbStrategy(this.computationParametersObserver, this.atmosphericConditions);
 
+<<<<<<< HEAD
             const climbWinds = this.windProfileFactory.getClimbWinds();
 
             this.climbPathBuilder.computeClimbPath(this.currentNdGeometryProfile, climbStrategy, speedProfile, climbWinds, this.headingProfile, fcuAltitude);
+=======
+            const climbWinds = new HeadwindProfile(this.windProfileFactory.getClimbWinds(), this.headingProfile);
+
+            this.climbPathBuilder.computeClimbPath(this.currentNdGeometryProfile, climbStrategy, speedProfile, climbWinds, fcuAltitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         } else if (tacticalDescentModes.includes(fcuVerticalMode) || fcuVerticalMode === VerticalMode.VS && fcuVerticalSpeed < 0) {
             // The idea here is that we compute a profile to FCU alt in the current modes, find the intercept with the managed profile. And then compute the managed profile from there.
             const descentStrategy = this.getAppropriateTacticalDescentStrategy(fcuVerticalMode, fcuVerticalSpeed);
@@ -403,10 +427,17 @@ export class VnavDriver implements GuidanceComponent {
             const selectedSpeedProfile = new ExpediteSpeedProfile(greenDotSpeed);
             const expediteGeometryProfile = new SelectedGeometryProfile();
             const climbStrategy = new ClimbThrustClimbStrategy(this.computationParametersObserver, this.atmosphericConditions);
+<<<<<<< HEAD
             const climbWinds = this.windProfileFactory.getClimbWinds();
 
             expediteGeometryProfile.addPresentPositionCheckpoint(presentPosition, fuelOnBoard);
             this.climbPathBuilder.computeClimbPath(expediteGeometryProfile, climbStrategy, selectedSpeedProfile, climbWinds, this.headingProfile, fcuAltitude);
+=======
+            const climbWinds = new HeadwindProfile(this.windProfileFactory.getClimbWinds(), this.headingProfile);
+
+            expediteGeometryProfile.addPresentPositionCheckpoint(presentPosition, fuelOnBoard);
+            this.climbPathBuilder.computeClimbPath(expediteGeometryProfile, climbStrategy, selectedSpeedProfile, climbWinds, fcuAltitude);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
             expediteGeometryProfile.finalizeProfile();
 

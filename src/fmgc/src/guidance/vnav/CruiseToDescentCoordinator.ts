@@ -7,8 +7,12 @@ import { ApproachPathBuilder } from '@fmgc/guidance/vnav/descent/ApproachPathBui
 import { SpeedProfile } from '@fmgc/guidance/vnav/climb/SpeedProfile';
 import { VerticalProfileComputationParametersObserver } from '@fmgc/guidance/vnav/VerticalProfileComputationParameters';
 import { FmgcFlightPhase } from '@shared/flightphase';
+<<<<<<< HEAD
 import { WindProfile } from '@fmgc/guidance/vnav/wind/WindProfile';
 import { AircraftHeadingProfile } from '@fmgc/guidance/vnav/wind/AircraftHeadingProfile';
+=======
+import { HeadwindProfile } from '@fmgc/guidance/vnav/wind/HeadwindProfile';
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
 export class CruiseToDescentCoordinator {
     private lastEstimatedFuelAtDestination: Pounds = 2300;
@@ -30,8 +34,13 @@ export class CruiseToDescentCoordinator {
     buildCruiseAndDescentPath(
         profile: NavGeometryProfile,
         speedProfile: SpeedProfile,
+<<<<<<< HEAD
         descentWinds: WindProfile,
         headingProfile: AircraftHeadingProfile,
+=======
+        cruiseWinds: HeadwindProfile,
+        descentWinds: HeadwindProfile,
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
         stepClimbStrategy: ClimbStrategy,
         stepDescentStrategy: DescentStrategy,
     ) {
@@ -63,13 +72,21 @@ export class CruiseToDescentCoordinator {
             this.approachPathBuilder.computeApproachPath(profile, speedProfile, this.lastEstimatedFuelAtDestination, this.lastEstimatedTimeAtDestination);
 
             // Geometric and idle
+<<<<<<< HEAD
             const todCheckpoint = this.descentPathBuilder.computeManagedDescentPath(profile, speedProfile, descentWinds, headingProfile, this.cruisePathBuilder.getFinalCruiseAltitude());
+=======
+            const todCheckpoint = this.descentPathBuilder.computeManagedDescentPath(profile, speedProfile, descentWinds, this.cruisePathBuilder.getFinalCruiseAltitude());
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             if (todCheckpoint.distanceFromStart < startOfCruiseCheckpoint.distanceFromStart) {
                 // T/D Reached
                 return;
             }
 
+<<<<<<< HEAD
             const cruisePath = this.cruisePathBuilder.computeCruisePath(profile, stepClimbStrategy, stepDescentStrategy, speedProfile);
+=======
+            const cruisePath = this.cruisePathBuilder.computeCruisePath(profile, stepClimbStrategy, stepDescentStrategy, speedProfile, cruiseWinds);
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
 
             if (!cruisePath || !todCheckpoint) {
                 throw new Error('[FMS/VNAV] Could not coordinate cruise and descent path');

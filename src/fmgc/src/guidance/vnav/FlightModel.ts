@@ -61,7 +61,11 @@ export class FlightModel {
             baseDrag = (0.0066 * Cl ** 5) - (0.0271 * Cl ** 4) + (0.0615 * Cl ** 3) - (0.0187 * Cl ** 2) + (0.0035 * Cl) + 0.0538;
             break;
         case FlapConf.CONF_3:
+<<<<<<< HEAD
             baseDrag = (0.0768 * Cl ** 5) - (0.3979 * Cl ** 4) + (0.8252 * Cl ** 3) - (0.7951 * Cl ** 2) + (0.3851 * Cl) + 0.0107;
+=======
+            baseDrag = (0.0768 * Cl ** 5) - (0.3979 * Cl ** 4) + (0.8252 * Cl ** 3) - (0.7951 * Cl ** 2) + (0.3851 * Cl) - 0.0107;
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
             break;
         case FlapConf.CONF_FULL:
             baseDrag = (0.017 * Cl ** 5) - (0.0978 * Cl ** 4) + (0.2308 * Cl ** 3) - (0.2278 * Cl ** 2) + (0.1157 * Cl) + 0.0682;
@@ -113,7 +117,11 @@ export class FlightModel {
         }
 
         for (let i = 0; i < xs.length - 1; i++) {
+<<<<<<< HEAD
             if (x > xs[i] && x < xs[i + 1]) {
+=======
+            if (x > xs[i] && x <= xs[i + 1]) {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                 return Common.interpolate(x, xs[i], xs[i + 1], ys[i], ys[i + 1]);
             }
         }

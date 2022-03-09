@@ -371,7 +371,11 @@ export class EfisSymbols {
                     const isBehindAircraft = i < activeFp.activeWaypointIndex;
                     const isInManagedNav = this.guidanceController.vnavDriver.isInManagedNav();
 
+<<<<<<< HEAD
                     if (isInManagedNav && !isBehindAircraft && wp.legAltitudeDescription !== 0) {
+=======
+                    if (isInManagedNav && !isBehindAircraft && wp.legAltitudeDescription > 0 && wp.legAltitudeDescription < 6) {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                         const predictionAtWaypoint = waypointPredictions.get(i);
 
                         type |= NdSymbolTypeFlags.Constraint;

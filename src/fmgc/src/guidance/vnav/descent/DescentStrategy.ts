@@ -158,7 +158,11 @@ export class IdleDescentStrategy implements DescentStrategy {
     }
 
     predictToSpeed(
+<<<<<<< HEAD
         initialAltitude: number, speed: Knots, finalSpeed: Knots, mach: Mach, fuelOnBoard: number, headwindComponent: WindComponent, config: AircraftConfiguration = this.defaultConfig,
+=======
+        _initialAltitude: number, _speed: Knots, _finalSpeed: Knots, _mach: Mach, _fuelOnBoard: number, _headwindComponent: WindComponent, _config: AircraftConfiguration = this.defaultConfig,
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
     ): StepResults {
         throw new Error('[FMS/VNAV] predictToSpeed not implemented for IdleDescentStrategy');
     }

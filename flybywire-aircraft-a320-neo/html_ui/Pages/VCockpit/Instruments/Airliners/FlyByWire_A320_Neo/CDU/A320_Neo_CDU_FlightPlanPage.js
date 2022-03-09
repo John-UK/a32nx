@@ -357,6 +357,7 @@ class CDUFlightPlanPage {
                 speedConstraint = speedPrefix + speedConstraint;
 
                 // Altitude
+                const hasAltConstraint = wp.legAltitudeDescription > 0 && wp.legAltitudeDescription < 6;
                 let altitudeConstraint = "-----";
                 let altPrefix = "\xa0";
                 if (fpIndex === fpm.getDestinationIndex()) {
@@ -383,7 +384,11 @@ class CDUFlightPlanPage {
                 } else if (ident !== "MANUAL") {
                     let altitudeToFormat = wp.legAltitude1;
 
+<<<<<<< HEAD
                     if (wp.legAltitudeDescription !== 0 && ident !== "(DECEL)") {
+=======
+                    if (hasAltConstraint && ident !== "(DECEL)") {
+>>>>>>> b8f1a6e480490f0dcab83c92369e74f1c82140c0
                         if (verticalWaypoint && verticalWaypoint.altitude) {
                             altitudeToFormat = verticalWaypoint.altitude;
                         }
